@@ -1,23 +1,12 @@
-import { Hono } from '@hono/hono'
-import { Transation } from './models/transaction.ts'
+import { Hono } from "@hono/hono"
+import { transactionsRoute } from "./routes/transactions.ts"
+
 const app = new Hono()
 
-app.get('/', (c) => {
-    return c.text('finance manager dziala')
+app.get("/", (c) => {
+    return c.text("Finance Manager działa")
 })
 
-app.get('/transactions', (c) => {
-    const transactions: Transation[] = [
-        {
-            id: 1,
-            title: 'water',
-            amount: 2,
-            type: 'expense',
-            createdAt: new Date().toISOString(),
-        },
-    ]
-
-    return c.json(transactions)
-})
+app.route("/transactions", transactionsRoute)
 
 Deno.serve(app.fetch)
