@@ -10,7 +10,9 @@ export default function CashStatus({ balance }: CashStatusProps) {
     <div className="CashStatus">
       <p className="CashStatus-balance">
         Cash balance:{" "}
-        <span className={`CashStatus-amount ${balance < 0 ? "is-negative" : ""}`}>
+        <span
+          className={`CashStatus-amount ${balance < 0 ? "is-negative" : ""}`}
+        >
           {formatCurrency(balance)}
         </span>
       </p>

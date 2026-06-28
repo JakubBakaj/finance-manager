@@ -17,7 +17,7 @@ const parseTransaction = (value: TransactionResponse): Transaction => {
     typeof value.createdAt !== "string" ||
     !isTransactionType(value.type)
   ) {
-    throw new Error("API zwróciło nieprawidłowe dane transakcji.");
+    throw new Error("API` returned invalid transaction data.");
   }
 
   return { ...value, amount };
@@ -27,14 +27,34 @@ export async function getTransactions(signal?: AbortSignal) {
   const response = await fetch("/api/transactions", { signal });
 
   if (!response.ok) {
-    throw new Error(`Nie udało się pobrać transakcji (${response.status}).`);
+    throw new Error(`Failed to fetch transactions (${response.status}).`);
   }
 
   const data: unknown = await response.json();
 
   if (!Array.isArray(data)) {
-    throw new Error("API zwróciło nieprawidłową odpowiedź.");
+    throw new Error("API returned invalid data (expected an array).");
   }
 
   return (data as TransactionResponse[]).map(parseTransaction);
+}
+
+export async function addTransaction(
+  transaction: Omit<Transaction, "id" | "createdAt">,
+  signal?: AbortSignal,
+) {
+  const response = await fetch("/api/transactions", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(transaction),
+    signal,
+  });
+
+  if (!response.ok) {
+    throw new Error(`Failed to add transaction (${response.status}).`);
+  }
+
+  const data: unknown = await response.json();
+
+  return parseTransaction(data as TransactionResponse);
 }

@@ -1,12 +1,12 @@
-import { PrismaPg } from '@prisma/adapter-pg'
-import { PrismaClient } from '../generated/prisma/client.ts'
+import { PrismaPg } from "@prisma/adapter-pg";
+import { PrismaClient } from "../generated/prisma/client.ts";
 
-const connectionString = Deno.env.get('DATABASE_URL')
+const connectionString = Deno.env.get("DATABASE_URL");
 
 if (!connectionString) {
-    throw new Error('DATABASE_URL is not set')
+  throw new Error("DATABASE_URL is not set");
 }
 
-const adapter = new PrismaPg({ connectionString })
+const adapter = new PrismaPg({ connectionString });
 
-export const prisma = new PrismaClient({ adapter })
+export const prisma = new PrismaClient({ adapter });

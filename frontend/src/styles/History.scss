@@ -69,3 +69,15 @@
     flex-direction: column;
   }
 }
+
+.History-add-button {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  border: 0;
+  border-top: 1px solid #e2e8f0;
+  background: #f4f6fa;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}

@@ -17,7 +17,9 @@ export default function App() {
     getTransactions(controller.signal)
       .then(setTransactions)
       .catch((reason: unknown) => {
-        if (reason instanceof DOMException && reason.name === "AbortError") return;
+        if (reason instanceof DOMException && reason.name === "AbortError") {
+          return;
+        }
         setError(reason instanceof Error ? reason.message : "unknown error");
       })
       .finally(() => {
@@ -44,7 +46,13 @@ export default function App() {
       <TopBar balance={summary.income - summary.expense} />
       <main className="App-content">
         <Stats income={summary.income} expense={summary.expense} />
-        <History transactions={transactions} isLoading={isLoading} error={error} />
+        <History
+          transactions={transactions}
+          isLoading={isLoading}
+          error={error}
+          onTransactionAdded={(transaction) =>
+            setTransactions((current) => [transaction, ...current])}
+        />
       </main>
     </div>
   );

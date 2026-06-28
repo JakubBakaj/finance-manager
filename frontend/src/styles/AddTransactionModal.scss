@@ -1,0 +1,97 @@
+.AddTransactionModal-backdrop {
+  position: fixed;
+  z-index: 10;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgb(15 23 42 / 55%);
+}
+
+.AddTransactionModal {
+  width: min(100%, 460px);
+  padding: 24px;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 24px 60px rgb(15 23 42 / 30%);
+}
+
+.AddTransactionModal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.AddTransactionModal-header h2 {
+  margin: 0;
+}
+
+.AddTransactionModal-close {
+  padding: 0 8px;
+  border: 0;
+  color: #64748b;
+  background: transparent;
+  font-size: 1.75rem;
+  cursor: pointer;
+}
+
+.AddTransactionModal form,
+.AddTransactionModal label {
+  display: grid;
+  gap: 8px;
+}
+
+.AddTransactionModal form {
+  gap: 18px;
+}
+
+.AddTransactionModal label {
+  color: #475569;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.AddTransactionModal input,
+.AddTransactionModal select {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  color: #172033;
+  background: white;
+  font: inherit;
+}
+
+.AddTransactionModal-error {
+  margin: 0;
+  color: #be123c;
+}
+
+.AddTransactionModal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.AddTransactionModal-actions button {
+  padding: 10px 16px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: white;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.AddTransactionModal-actions button[type="submit"] {
+  border-color: #172033;
+  color: white;
+  background: #172033;
+}
+
+.AddTransactionModal-actions button:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
