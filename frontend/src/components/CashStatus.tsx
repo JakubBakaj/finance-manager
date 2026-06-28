@@ -1,11 +1,18 @@
 import "../styles/CashStatus.scss";
+import { formatCurrency } from "../lib/currency";
 
-export default function CashStatus() {
+type CashStatusProps = {
+  balance: number;
+};
+
+export default function CashStatus({ balance }: CashStatusProps) {
   return (
     <div className="CashStatus">
-      {/* Display the current cash balance here, it will use the cashBalance state variable which will get the data from the api */}
       <p className="CashStatus-balance">
-        Current cash balance: <span className="CashStatus-amount">1000 zł</span>
+        Cash balance:{" "}
+        <span className={`CashStatus-amount ${balance < 0 ? "is-negative" : ""}`}>
+          {formatCurrency(balance)}
+        </span>
       </p>
     </div>
   );

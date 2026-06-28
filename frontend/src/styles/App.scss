@@ -1,0 +1,23 @@
+.App {
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 32px 0;
+}
+
+.App-content {
+  display: grid;
+  grid-template-columns: minmax(240px, 1fr) minmax(0, 2fr);
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 720px) {
+  .App {
+    width: min(100% - 24px, 1120px);
+    padding: 20px 0;
+  }
+
+  .App-content {
+    grid-template-columns: 1fr;
+  }
+}
